@@ -1,0 +1,21 @@
+[tool.ruff]
+line-length = 120
+exclude = [
+    '.git',
+    '.gitignore',
+    '*.pot',
+    '*.py[co]',
+    '__pycache__',
+    'venv',
+    '.env',
+    '.venv',
+    'versions',
+    'debug_files',
+]
+
+[tool.ruff.lint]
+select = ["F841", "ARG001"]
+extend-select = ['I', 'E', 'W', 'F']
+
+[tool.ruff.format]
+quote-style = 'single'
