@@ -34,5 +34,18 @@ class TestPhonebook:
         pb = Phonebook()
         for contact in dummy_contacts:
             pb.add_contact(contact)
-        pb.delete_contact('81112223344')
-        assert pb.get_all_contacts() == list(dummy_contacts[1])
+        assert pb.delete_contact(dummy_contacts[0].phone_number)
+        assert not pb.delete_contact('invalid_number')
+        assert pb.get_all_contacts() == [dummy_contacts[1]]
+
+    @staticmethod
+    def test_search_contacts(dummy_contacts, setup_teardown_file):
+        pb = Phonebook()
+        for contact in dummy_contacts:
+            pb.add_contact(contact)
+        phone_number_search = pb.search_contacts(dummy_contacts[0].phone_number)
+        keyword_search = pb.search_contacts('name')
+        false_search = pb.search_contacts('false')
+        assert phone_number_search == [dummy_contacts[0]]
+        assert keyword_search == dummy_contacts
+        assert false_search == []
