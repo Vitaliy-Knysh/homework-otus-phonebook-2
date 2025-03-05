@@ -1,3 +1,4 @@
+import os.path
 import re
 
 from pydantic import BaseModel, field_validator
@@ -17,9 +18,28 @@ class Contact(BaseModel):
 
 
 class Phonebook:
-    def __init__(self):
-        contacts: list[Contact]
+
+    @staticmethod
+    def add_contact(contact):
+        pass
+
+    @staticmethod
+    def delete_contact():
+        pass
+
+    @staticmethod
+    def change_contact():
+        pass
+
+    @staticmethod
+    def get_all_contacts():
+        pass
+
+    @staticmethod
+    def search_contacts():
+        pass
+
 
 
 if __name__ == '__main__':
-    print(re.match())
+    pass
