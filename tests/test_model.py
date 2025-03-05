@@ -1,10 +1,9 @@
-from app.model import Contact, Phonebook
 import os
 
-from tests.conftest import setup_teardown_file
+from app.model import Contact, Phonebook
 
 
-def test_contact(valid_phone_numbers, setup_teardown_file):
+def test_contact(valid_phone_numbers):
     for number in valid_phone_numbers:
         Contact(
             phone_number=number,
@@ -24,14 +23,14 @@ class TestPhonebook:
         assert contacts == []
 
     @staticmethod
-    def test_add_contact(setup_teardown_file):
+    def test_add_contact(dummy_contacts, setup_teardown_file):
         pb = Phonebook()
         for contact in dummy_contacts:
             pb.add_contact(contact)
         assert pb.get_all_contacts() == dummy_contacts
 
     @staticmethod
-    def test_delete_contact(setup_teardown_file):
+    def test_delete_contact(dummy_contacts, setup_teardown_file):
         pb = Phonebook()
         for contact in dummy_contacts:
             pb.add_contact(contact)

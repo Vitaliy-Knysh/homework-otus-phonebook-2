@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from app.model import Contact, Phonebook
+from app.model import Contact
 
 
 @pytest.fixture()

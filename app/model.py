@@ -1,4 +1,3 @@
-import os.path
 import re
 
 from pydantic import BaseModel, field_validator
@@ -9,6 +8,7 @@ class Contact(BaseModel):
     name: str
     comment: str = None
 
+    @classmethod
     @field_validator('phone_number')
     def validate_number(cls, value: str) -> str:
         phone_number_regex = r"[()\d+-]{11,}"
@@ -20,11 +20,11 @@ class Contact(BaseModel):
 class Phonebook:
 
     @staticmethod
-    def add_contact(contact):
+    def add_contact(contact: Contact):
         pass
 
     @staticmethod
-    def delete_contact():
+    def delete_contact(phone_number: str):
         pass
 
     @staticmethod
@@ -32,14 +32,9 @@ class Phonebook:
         pass
 
     @staticmethod
-    def get_all_contacts():
+    def get_all_contacts() -> list[Contact]:
         pass
 
     @staticmethod
-    def search_contacts():
+    def search_contacts() -> list[Contact] | Contact:
         pass
-
-
-
-if __name__ == '__main__':
-    pass
