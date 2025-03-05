@@ -25,15 +25,15 @@ class TestPhonebook:
 
     @staticmethod
     def test_add_contact(setup_teardown_file):
-        pass
-
-    @staticmethod
-    def test_remove_contact(setup_teardown_file):
-        pass
-
-    @staticmethod
-    def test_get_contact_list(setup_teardown_file):
         pb = Phonebook()
         for contact in dummy_contacts:
             pb.add_contact(contact)
         assert pb.get_all_contacts() == dummy_contacts
+
+    @staticmethod
+    def test_delete_contact(setup_teardown_file):
+        pb = Phonebook()
+        for contact in dummy_contacts:
+            pb.add_contact(contact)
+        pb.delete_contact('81112223344')
+        assert pb.get_all_contacts() == list(dummy_contacts[1])
