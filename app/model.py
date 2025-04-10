@@ -19,7 +19,6 @@ class Contact(BaseModel):
 
 
 class Phonebook:
-
     @staticmethod
     def add_contact(contact: Contact):
         with open('phonebook.json') as file:
@@ -86,3 +85,17 @@ class Phonebook:
                     )
                 )
         return return_contacts
+
+
+class ParsedArgs(BaseModel):
+    op_type: str
+    new_contact: Contact
+    keyword: str
+
+    @classmethod
+    @field_validator('op_type')
+    def validate_op_type(cls, value):
+        if value not in ['add', 'delete', 'change', 'search']:
+            raise ValueError(f'Неправильная операция: {value} Доступные операции: add, delete, change, search')
+        else:
+            return value

@@ -1,6 +1,6 @@
 import os
 
-from app.model import Contact, Phonebook
+from app.model import Contact, Phonebook, ParsedArgs
 
 
 def test_contact(valid_phone_numbers):
@@ -49,3 +49,11 @@ class TestPhonebook:
         assert phone_number_search == [dummy_contacts[0]]
         assert keyword_search == dummy_contacts
         assert false_search == []
+
+
+def test_parsed_args():
+    ParsedArgs(
+        op_type='add',
+        new_contact={'name': 'name2', 'phone_number': '+71112223344', 'comment': 'comment2'},
+        keyword=''
+    )
