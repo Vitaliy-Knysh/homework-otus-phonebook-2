@@ -67,12 +67,12 @@ def get_arguments():
     ]
 
 
-@pytest.fixture
-def mock_input(monkeypatch):
-    def mock(value):
-        monkeypatch.setattr('builtins.input', lambda _: value)
+# @pytest.fixture
+# def mock_input(monkeypatch):
+#     def mock(value):
+#         monkeypatch.setattr('builtins.input', lambda _: 'value')
+#     return mock
 
-    return mock
 
 def test_args_input(mock_input):
     mock_input("--op_type=add --new_contact='{\"amogus\": \"sus\"}'")

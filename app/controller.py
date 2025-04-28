@@ -33,8 +33,6 @@ def parse_arguments(parser: argparse.ArgumentParser) -> ParsedArgs:
     )
 
 
-
-
 if __name__ == '__main__':
     parser = init_parser()
     a = parse_arguments(parser)
